@@ -1,0 +1,122 @@
+﻿@page "/quiz"
+<PageTitle>QUIZ C#</PageTitle>
+<link href="https://fonts.googleapis.com/css2?family=Geo:ital@0;1&display=swap" rel="stylesheet">
+<link href="css/quiz.css" rel="stylesheet">
+<div class="container">
+    <div class="content">
+
+        @if (currentQuestionIndex < questions.Count)
+        {
+            <div class="question-container">
+                <h1>QUESTÃO @currentQuestion</h1>
+                <h4>@questions[currentQuestionIndex].Text</h4>
+
+                @foreach (var option in questions[currentQuestionIndex].Options)
+                {
+                    <button class="option-btn" @onclick="() => SelectAnswer(option)">
+                        @option
+                    </button>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="result-container">
+                <h4>Parabéns! Você completou o quiz.</h4>
+                <p>Sua pontuação é: @score de @questions.Count</p>
+                <a href="#" class="btn btn-primary">Tentar novamente</a>
+            </div> 
+        }
+    </div>
+</div>
+
+@code {
+    private int currentQuestionIndex = 0;
+    private int currentQuestion = 1;
+    private int score = 0;
+
+    private List<Question> questions = new List<Question>
+    {
+        new Question
+        {
+            Text = "Quem foi o criador da linguagem de programação C#?",  
+            Options = new List<string> { "James Gosling", "Dennis Ritchie", "Bjarne Stroustrup", "Anders Hejlsberg" },
+            CorrectAnswer = "Anders Hejlsberg"
+        },
+        new Question
+        {
+            Text = "Qual é a extensão de um arquivo de código-fonte C#?",  
+            Options = new List<string> { ".java", ".cs", ".cpp", ".py" },
+            CorrectAnswer = ".cs"
+        },
+        new Question
+        {
+            Text = "Qual é o tipo de exceção que ocorre quando você tenta acessar um índice fora do limite de um array em C#?",
+            Options = new List<string> { "ArgumentOutOfRangeException", "IndexOutOfRangeException", "NullReferenceException", "DivideByZeroException" },
+            CorrectAnswer = "IndexOutOfRangeException"
+        },
+        new Question
+        {
+            Text = "Qual é o tipo de dado utilizado para representar números decimais com precisão em C#?",
+            Options = new List<string> { "int", "float", "decimal", "double" },
+            CorrectAnswer = "decimal"
+        },
+        new Question
+        {
+            Text = "O que é o LINQ em C#?",
+            Options = new List<string> { "Linguagem para integração de consultas em bancos de dados.", "Técnica para processamento de listas de dados.", "Framework para manipulação de arquivos.", "Mecanismo para consulta a bancos de dados relacionais." },
+            CorrectAnswer = "Técnica para processamento de listas de dados."
+        },
+        new Question
+        {
+            Text = "Qual é a diferença entre os tipos int e long em C#?",
+            Options = new List<string> { "int ocupa mais memória que long.", "long pode armazenar números maiores do que int.", "Não existe diferença.", "Ambos são do mesmo tipo, apenas com nomes diferentes." },
+            CorrectAnswer = "long pode armazenar números maiores do que int."
+        },
+        new Question
+        {
+            Text = "O que faz o modificador static em C#?",
+            Options = new List<string> { "Indica que um método ou variável pertence à instância da classe.", "Indica que o método ou variável pertence à classe, não a uma instância da classe.", "Torna o método ou variável acessível apenas dentro da classe.", "Impede que a variável ou método seja modificado." },
+            CorrectAnswer = "Indica que o método ou variável pertence à classe, não a uma instância da classe."
+        },
+        new Question
+        {
+            Text = "Qual é o tipo de dado usado para armazenar um valor verdadeiro ou falso em C#?",
+            Options = new List<string> { "bool", "boolean", "true/false", "int" },
+            CorrectAnswer = "bool"
+        },
+        new Question
+        {
+            Text = "Qual é o tipo de valor padrão de um tipo bool em C#?",
+            Options = new List<string> { "true", "false", "null", "0" },
+            CorrectAnswer = "false"
+        },
+        new Question
+        {
+            Text = "Como se chama a técnica que permite manipular erros em C#?",
+            Options = new List<string> { "Exceptions", "Debugging", "Error Handling", "Try/Catch" },
+            CorrectAnswer = "Try/Catch"
+        },
+
+            
+    };
+
+
+    private void SelectAnswer(string selectedOption)
+    {
+        if (selectedOption == questions[currentQuestionIndex].CorrectAnswer)
+        {
+            score++; 
+        }
+
+        currentQuestionIndex++;  
+        currentQuestion++;
+    }
+
+    public class Question
+    {
+        public string Text { get; set; } 
+        public List<string> Options { get; set; }  
+        public string CorrectAnswer { get; set; }  
+    }
+}

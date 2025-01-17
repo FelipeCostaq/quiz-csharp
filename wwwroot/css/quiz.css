@@ -1,0 +1,77 @@
+﻿
+body {
+    font-family: sans-serif;
+    background: linear-gradient(135deg, #68217A, #68217A);
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'Geo', sans-serif;
+    font-weight: bolder;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+
+.content {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+
+h1 {
+    font-size: 2rem;
+    color: #68217A;
+    margin-bottom: 20px;
+}
+
+
+.question-container h4 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+.option-btn {
+    background-color: #68217A;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+    .option-btn:hover {
+        background-color: #531c63;
+    }
+
+.result-container {
+    font-size: 1.25rem;
+    color: #333;
+    padding: 20px;
+}
+
+    .result-container h4 {
+        color: #68217A;
+    }
+
+    .result-container p {
+        font-size: 1.1rem;
+    }
